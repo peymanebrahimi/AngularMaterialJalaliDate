@@ -13,3 +13,4 @@ and configure your module as shown in the mat-core.module.ts
 ### Prerequisites
  - Angular Material
 
+### [Demo](https://my-demos-c6cc8.firebaseapp.com/)
