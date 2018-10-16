@@ -1,27 +1,16 @@
-# MaterialDatePickerJalali
+# تقویم هجری شمسی برای Angular Material
+## jalali moment adapter for angular material
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.2.
+## Based on [Jalali Moment](https://github.com/fingerpich/jalali-moment)
 
-## Development server
+Jalali [DateAdapter](https://blog.angular.io/taking-advantage-of-the-angular-material-datepicker-237e80fa14b3) for angular material datepicker.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Getting Started
+Grab content of these 2 files:
+    - jalali-moment-date-adapter.ts
+    - jalali_moment_formats.ts
+and configure your module as shown in the mat-core.module.ts
 
-## Code scaffolding
+### Prerequisites
+    - Angular Material
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
