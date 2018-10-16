@@ -1,11 +1,10 @@
-# تقویم هجری شمسی برای Angular Material
-## jalali moment adapter for angular material
+# آداپتور هجری شمسی برای Angular Material DatePicker
 
 ## Based on [Jalali Moment](https://github.com/fingerpich/jalali-moment)
 
-Jalali [DateAdapter](https://blog.angular.io/taking-advantage-of-the-angular-material-datepicker-237e80fa14b3) for angular material datepicker.
+## Jalali moment [DateAdapter](https://blog.angular.io/taking-advantage-of-the-angular-material-datepicker-237e80fa14b3) for angular material datepicker.
 
-## Getting Started
+### Getting Started
 Grab content of these 2 files:
  - jalali-moment-date-adapter.ts
  - jalali_moment_formats.ts
