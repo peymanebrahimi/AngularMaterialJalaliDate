@@ -7,10 +7,10 @@ Jalali [DateAdapter](https://blog.angular.io/taking-advantage-of-the-angular-mat
 
 ## Getting Started
 Grab content of these 2 files:
-    - jalali-moment-date-adapter.ts
-    - jalali_moment_formats.ts
+ - jalali-moment-date-adapter.ts
+ - jalali_moment_formats.ts
 and configure your module as shown in the mat-core.module.ts
 
 ### Prerequisites
-    - Angular Material
+ - Angular Material
 
