@@ -208,7 +208,6 @@ export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
     let result;
     if (this.locale === "fa") {
       result = this.createPersianDateFrom3Numbers(year, month, date);
-      console.log('result 211: ', result)
     } else {
       result = this._createMoment({ year, month, date }).locale(this.locale);
     }
