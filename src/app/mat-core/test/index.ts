@@ -1,13 +1,9 @@
 import {NgModule} from '@angular/core';
-import {
-  DateAdapter,
-  MAT_DATE_LOCALE,
-  MAT_DATE_LOCALE_PROVIDER,
-  MAT_DATE_FORMATS
-} from '@angular/material';
+
 
 import { JalaliMomentDateAdapter } from '../jalali-moment-date-adapter';
 import { JALALI_MOMENT_FORMATS } from '../jalali_moment_formats';
+import { MAT_DATE_LOCALE_PROVIDER, DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 
 export * from '../jalali-moment-date-adapter';
 export * from '../jalali_moment_formats';

@@ -1,4 +1,4 @@
-import { Inject, InjectionToken, Optional } from "@angular/core";
+import { Inject, Optional } from "@angular/core";
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from "jalali-moment";
 import { MatMomentDateAdapterOptions, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -35,7 +35,7 @@ export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
     private _options?: MatMomentDateAdapterOptions
   ) {
     super();
-    this.setLocale(dateLocale || moment.locale());
+    this.setLocale(dateLocale || moment.locale("fa"));
   }
 
   setLocale(locale: string) {
@@ -48,7 +48,7 @@ export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
         longMonths: momentLocaleData.jMonths(),
         shortMonths: momentLocaleData.jMonthsShort(),
         dates: range(31, i =>
-          this.createPersianDateFrom3Numbers(2017, 0, i + 1).format("D")
+          this.createPersianDateFrom3Numbers(1397, 0, i + 1).format("D")
         ),
         longDaysOfWeek: momentLocaleData.weekdays(),
         shortDaysOfWeek: momentLocaleData.weekdaysShort(),
@@ -143,17 +143,15 @@ export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
     return date.clone().locale(this.locale);
   }
 
-  private createPersianDateFrom3Numbers(
-    year: number,
-    month: number,
-    date: number
-  ): moment.Moment {
+  private createPersianDateFrom3Numbers(year: number, month: number, date: number): moment.Moment {
     let result: moment.Moment;
+
     if (this._options && this._options.useUtc) {
       result = moment().utc();
     } else {
       result = moment();
     }
+
     return result
       .jYear(year)
       .jMonth(month)

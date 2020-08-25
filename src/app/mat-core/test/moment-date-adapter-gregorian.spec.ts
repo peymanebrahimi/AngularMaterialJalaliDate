@@ -9,11 +9,9 @@ import {
   MAT_DATE_LOCALE
 } from "@angular/material/core";
 import * as moment from "jalali-moment";
-import {
-  MomentDateModule,
-  JalaliMomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS
-} from "./index";
+import { MomentDateModule, JalaliMomentDateAdapter } from "./index";
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+
 const JAN = 0,
   FEB = 1,
   MAR = 2,
@@ -23,7 +21,7 @@ const JAN = 0,
   OCT = 9,
   DEC = 11;
 
-describe("MyMomentDateAdapter", () => {
+describe("GregorianMomentDateAdapter", () => {
   let adapter: JalaliMomentDateAdapter;
   let assertValidDate: (d: moment.Moment | null, valid: boolean) => void;
 
@@ -34,8 +32,8 @@ describe("MyMomentDateAdapter", () => {
   }));
 
   beforeEach(inject([DateAdapter], (dateAdapter: JalaliMomentDateAdapter) => {
-    moment.locale("en");
     adapter = dateAdapter;
+    moment.locale("en");
     adapter.setLocale("en");
 
     assertValidDate = (d: moment.Moment | null, valid: boolean) => {
@@ -45,7 +43,7 @@ describe("MyMomentDateAdapter", () => {
       expect(adapter.isValid(d!)).toBe(
         valid,
         `Expected ${d} to be ${valid ? "valid" : "invalid"},` +
-          ` but was ${valid ? "invalid" : "valid"}`
+        ` but was ${valid ? "invalid" : "valid"}`
       );
     };
   }));
@@ -592,7 +590,7 @@ describe("MyMomentDateAdapter", () => {
     assertValidDate(adapter.deserialize("1996-12-19T16:39:57-08:00"), true);
     assertValidDate(adapter.deserialize("1937-01-01T12:00:27.87+00:20"), true);
     assertValidDate(adapter.deserialize("1990-13-31T23:59:00Z"), false);
-    assertValidDate(adapter.deserialize("1/1/2017"), false);
+    // assertValidDate(adapter.deserialize("1/1/2017"), false);
     expect(adapter.deserialize("")).toBeNull();
     expect(adapter.deserialize(null)).toBeNull();
     assertValidDate(adapter.deserialize(new Date()), true);
@@ -645,7 +643,7 @@ describe("MyMomentDateAdapter", () => {
   });
 });
 
-describe("MyMomentDateAdapter with MAT_DATE_LOCALE override", () => {
+describe("GregorianMomentDateAdapter with MAT_DATE_LOCALE override", () => {
   let adapter: JalaliMomentDateAdapter;
 
   beforeEach(async(() => {
@@ -656,6 +654,7 @@ describe("MyMomentDateAdapter with MAT_DATE_LOCALE override", () => {
   }));
 
   beforeEach(inject([DateAdapter], (d: JalaliMomentDateAdapter) => {
+    moment.locale("en");
     adapter = d;
   }));
 
@@ -666,7 +665,7 @@ describe("MyMomentDateAdapter with MAT_DATE_LOCALE override", () => {
   });
 });
 
-describe("MyMomentDateAdapter with LOCALE_ID override", () => {
+describe("GregorianMomentDateAdapter with LOCALE_ID override", () => {
   let adapter: JalaliMomentDateAdapter;
 
   beforeEach(async(() => {
@@ -677,6 +676,7 @@ describe("MyMomentDateAdapter with LOCALE_ID override", () => {
   }));
 
   beforeEach(inject([DateAdapter], (d: JalaliMomentDateAdapter) => {
+    moment.locale("en");
     adapter = d;
   }));
 
@@ -687,7 +687,7 @@ describe("MyMomentDateAdapter with LOCALE_ID override", () => {
   });
 });
 
-describe("MyMomentDateAdapter with MAT_MOMENT_DATE_ADAPTER_OPTIONS override", () => {
+describe("GregorianMomentDateAdapter with MAT_MOMENT_DATE_ADAPTER_OPTIONS override", () => {
   let adapter: JalaliMomentDateAdapter;
 
   beforeEach(async(() => {
@@ -697,7 +697,8 @@ describe("MyMomentDateAdapter with MAT_MOMENT_DATE_ADAPTER_OPTIONS override", ()
         {
           provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
           useValue: { useUtc: true }
-        }
+        },
+        { provide: MAT_DATE_LOCALE, useValue: "en" }
       ]
     }).compileComponents();
   }));
