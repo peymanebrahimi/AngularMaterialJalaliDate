@@ -1,31 +1,8 @@
 import { Inject, InjectionToken, Optional } from "@angular/core";
 import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from "jalali-moment";
+import { MatMomentDateAdapterOptions, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
-/** Configurable options for {@see MomentDateAdapter}. */
-export interface MatMomentDateAdapterOptions {
-  /**
-   * Turns the use of utc dates on or off.
-   * Changing this will change how Angular Material components like DatePicker output dates.
-   * {@default false}
-   */
-  useUtc: boolean;
-}
-
-/** InjectionToken for moment date adapter to configure options. */
-export const MAT_MOMENT_DATE_ADAPTER_OPTIONS = new InjectionToken<
-  MatMomentDateAdapterOptions
->("MAT_MOMENT_DATE_ADAPTER_OPTIONS", {
-  providedIn: "root",
-  factory: MAT_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY
-});
-
-/** @docs-private */
-export function MAT_MOMENT_DATE_ADAPTER_OPTIONS_FACTORY(): MatMomentDateAdapterOptions {
-  return {
-    useUtc: false
-  };
-}
 
 /** Creates an array and fills it with values. */
 function range<T>(length: number, valueFunction: (index: number) => T): T[] {
@@ -53,12 +30,9 @@ export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
   };
 
   constructor(
-    @Optional()
-    @Inject(MAT_DATE_LOCALE)
-    dateLocale: string,
-    @Optional()
-    @Inject(MAT_MOMENT_DATE_ADAPTER_OPTIONS)
-    private options?: MatMomentDateAdapterOptions
+    @Optional() @Inject(MAT_DATE_LOCALE) dateLocale: string,
+    @Optional() @Inject(MAT_MOMENT_DATE_ADAPTER_OPTIONS)
+    private _options?: MatMomentDateAdapterOptions
   ) {
     super();
     this.setLocale(dateLocale || moment.locale());
@@ -175,7 +149,7 @@ export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
     date: number
   ): moment.Moment {
     let result: moment.Moment;
-    if (this.options && this.options.useUtc) {
+    if (this._options && this._options.useUtc) {
       result = moment().utc();
     } else {
       result = moment();
@@ -230,6 +204,7 @@ export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
     }
     return value ? this._createMoment(value).locale(this.locale) : null;
   }
+
   format(date: moment.Moment, displayFormat: string): string {
     date = this.clone(date);
     if (!this.isValid(date)) {
@@ -323,12 +298,23 @@ export class JalaliMomentDateAdapter extends DateAdapter<moment.Moment> {
     }
     return super.deserialize(value);
   }
-  
+
 
   /** Creates a Moment instance while respecting the current UTC settings. */
-  private _createMoment(...args: any[]): moment.Moment {
-    return this.options && this.options.useUtc
-      ? moment.utc(...args)
-      : moment(...args);
+  // private _createMoment(...args: any[]): moment.Moment {
+  //   return this.options && this.options.useUtc
+  //     ? moment.utc(...args)
+  //     : moment(...args);
+  // }
+  private _createMoment(
+    date: moment.MomentInput,
+    format?: moment.MomentFormatSpecification,
+    locale?: string,
+  ): moment.Moment {
+    const { strict, useUtc }: MatMomentDateAdapterOptions = this._options || {};
+
+    return useUtc
+      ? moment.utc(date, format, locale, strict)
+      : moment(date, format, locale, strict);
   }
 }

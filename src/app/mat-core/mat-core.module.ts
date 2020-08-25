@@ -2,7 +2,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LayoutModule } from '@angular/cdk/layout';
 import { PlatformModule } from '@angular/cdk/platform';
 import { NgModule } from '@angular/core';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
@@ -37,10 +37,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatTreeModule } from "@angular/material/tree";
-import {
-  JalaliMomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS
-} from "./jalali-moment-date-adapter";
+import { JalaliMomentDateAdapter } from "./jalali-moment-date-adapter";
 import { JALALI_MOMENT_FORMATS, MOMENT_FORMATS } from "./jalali_moment_formats";
 import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material/core';
 
@@ -114,4 +111,4 @@ const MaterialComponents = [
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
   ]
 })
-export class MatCoreModule {}
+export class MatCoreModule { }
