@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "MaterialDatePickerJalali"
+  "defaultProject": "MaterialDatePickerJalali",
+  "cli": {
+    "analytics": "298dff2d-46a0-417f-af2a-4e4a63516102"
+  }
 }

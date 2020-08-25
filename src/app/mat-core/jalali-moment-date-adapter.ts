@@ -1,5 +1,5 @@
 import { Inject, InjectionToken, Optional } from "@angular/core";
-import { DateAdapter, MAT_DATE_LOCALE } from "@angular/material";
+import { DateAdapter, MAT_DATE_LOCALE } from '@angular/material/core';
 import * as moment from "jalali-moment";
 
 /** Configurable options for {@see MomentDateAdapter}. */
