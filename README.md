@@ -4,7 +4,7 @@
 
 by using [material-jalali-moment-adapter](https://www.npmjs.com/package/material-jalali-moment-adapter) package
 
-# &#x202b; آداپتور هجری شمسی برای Angular Material DatePicker
+## &#x202b; آداپتور هجری شمسی برای Angular Material DatePicker
 
 ## Based on [Jalali Moment](https://github.com/fingerpich/jalali-moment)
 
