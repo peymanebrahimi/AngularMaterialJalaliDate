@@ -1,3 +1,9 @@
+# Depricated
+
+## New aproach :loudspeaker:
+
+by using [material-jalali-moment-adapter](https://www.npmjs.com/package/material-jalali-moment-adapter) package
+
 # &#x202b; آداپتور هجری شمسی برای Angular Material DatePicker
 
 ## Based on [Jalali Moment](https://github.com/fingerpich/jalali-moment)
@@ -17,6 +23,3 @@ and configure your module as shown in the mat-core.module.ts
 
 <br/>
 
-## New aproach :loudspeaker:
-
-by using [material-jalali-moment-adapter](https://www.npmjs.com/package/material-jalali-moment-adapter) package
